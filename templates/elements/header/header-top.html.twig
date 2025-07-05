@@ -1,0 +1,80 @@
+<div class="header-top">
+    <div class="header-logo" style="width: 204px;">
+        <a href="{{ path('app_home') }}"><img src="{{ asset('img/header/logo.png') }}" alt="" style="display: none;" /></a>
+    </div>
+    <div class="header-contact">
+        {#<div class="header-contact__col">
+            <div class="header-contact__img">
+                <img src="{{ asset('img/header/geo.svg') }}" alt="" />
+            </div>
+            <div class="header-contact__tell">
+                <a href="tel:+74951912132"><span>+7 (495) 191-21-32</span></a>
+                <p>ул. Ибрагимова 31 ас4</p>
+            </div>
+        </div>#}
+        <div class="header-contact__col" style="min-width: 128px;">
+            <div class="header-feedback__mobile">
+                <button href="#" class="open-form-btn">Получить консультацию</button>
+            </div>
+        </div>
+        <div class="header-contact__col">
+            <div class="header-contact__img">
+                <img src="{{ asset('img/header/geo.svg') }}" alt="" />
+            </div>
+            <div class="header-contact__tell">
+                <a href="tel:+74951914133"><span>+7 (495) 191-41-33</span></a>
+                <p>1-й Силикатный проезд, 19/2с26</p>
+            </div>
+        </div>
+        <div class="header-contact__col">
+            <div class="header-contact__img">
+                <img src="{{ asset('img/header/time.svg') }}" alt="" />
+            </div>
+            <div class="header-contact__tell">
+                <span>09:00-21:00</span>
+                <p>Без выходных</p>
+            </div>
+        </div>
+    </div>
+    <div class="header-feedback">
+        <button href="#" class="open-form-btn">Получить консультацию</button>
+    </div>
+    <div class="header-btn" id="openMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="header-menu" id="menu">
+        <div class="header-menu__close">
+            <button id="closeMenu"><img src="{{ asset('img/close.png') }}" alt="" /></button>
+        </div>
+        <nav class="header-menu__nav">
+            <ul class="header-menu__list">
+                <li class="header-menu__link"><a href="{{ path('app_home') }}">Главная</a></li>
+                <li class="header-menu__link"><a href="{{ path('app_home') }}#about">О компании</a></li>
+                <li class="header-menu__link"><a href="{{ path('app_home') }}#services">Услуги</a></li>
+                <li class="header-menu__link">
+                    <a href="{{ path('korporativnym_klientam') }}">Корпоративным клиентам</a>
+                </li>
+                {#<li class="header-menu__link"><a href="{{ path('app_home') }}#reviews">Отзывы</a></li>#}
+                <li class="header-menu__link"><a href="{{ path('app_home') }}#certificates">Сертификаты</a></li>
+                <li class="header-menu__link"><a href="{{ path('app_home') }}#promo">Наши акции</a></li>
+                {#<li class="header-menu__link"><a href="">Фотогалерея</a></li>#}
+                <li class="header-menu__link"><a href="{{ path('app_home') }}#price">Цены</a></li>
+                <li class="header-menu__link"><a href="{{ path('app_home') }}#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="header-contact__col">
+            <div class="header-contact__img">
+                <img src="{{ asset('img/header/time.svg') }}" alt="" />
+            </div>
+            <div class="header-contact__tell">
+                <span>09:00-21:00</span>
+                <p>Без выходных</p>
+            </div>
+        </div>
+        <div class="header-menu__feedback">
+            <button class="open-form-btn">Получить консультацию</button>
+        </div>
+    </div>
+</div>
