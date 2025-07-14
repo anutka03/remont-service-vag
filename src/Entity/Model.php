@@ -27,7 +27,8 @@ class Model
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'models')]
+    #[ORM\ManyToOne(targetEntity: Brand::class, inversedBy: 'models')]
+    #[ORM\JoinColumn(name: "brand_id", referencedColumnName: "id", nullable: false)]
     private ?Brand $brand = null;
 
     /**

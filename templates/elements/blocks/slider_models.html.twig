@@ -1,0 +1,57 @@
+<div class="block markiblock">
+    <div class="container">
+        {% if model is defined %}
+        <h2 class="zag">Выбрать другую модель {{ brand.name }}</h2>
+        {% endif %}
+        <div class="markiblock-slider">
+            {% for model in brand.models %}
+
+               {# {% if model.status == 1 %}#}
+                    {% set model_name = model.nameEn %}
+                <div>
+                    <a href="{{ path('brand_model_or_service', { brandSlug: brand.slug, slug: model.slug }) }}" class="markiblock-card">
+                <span class="markiblock-card-img">
+                        <picture>
+                             <source class="lazy" data-srcset="{{ asset('img/cars/'~brand.name|lower|replace({' ': '-'})~'/'~model_name|lower|replace({' ': '-'})~'/small.png') }}"
+                                     type="image/webp">
+                             <img class="lazy" src="{{ asset('img/cars/'~brand.name|lower|replace({' ': '-'})~'/'~model_name|lower|replace({' ': '-'})~'/small.png') }}" alt="{{ model.nameEn }}">
+                        </picture>
+                </span>
+                        <span class="markiblock-card-zag">{{ model.nameEn }}</span>
+                    </a>
+                </div>
+                {#{% endif %}#}
+            {% endfor %}
+        </div>
+        <div class="markiblock-spis">
+            <div class="row">
+                {% for model in brand.models %}
+                   {# {% if model.status == 1 %}#}
+                        {% set model_name = model.nameEn %}
+                        <div class="col-lg-2 col-sm-3 col-6">
+                            <a href="{{ path('brand_model_or_service', { brandSlug: brand.slug, slug: model.slug }) }}"
+                               class="markiblock-card">
+                        <span class="markiblock-card-img">
+                           <picture>
+                             <source class="lazy" data-srcset="{{ asset('img/cars/'~brand.name|lower|replace({' ': '-'})~'/'~model_name|lower|replace({' ': '-'})~'/small.png')  }}"
+                                     type="image/webp">
+                             <img class="lazy" src="{{ asset('img/cars/'~brand.name|lower|replace({' ': '-'})~'/'~model_name|lower|replace({' ': '-'})~'/small.png') }}" alt="{{ model.nameEn }}">
+                        </picture>
+                        </span>
+                                <span class="markiblock-card-zag">{{ model.nameEn }}</span>
+                            </a>
+                        </div>
+                   {# {% endif %}#}
+                {% endfor %}
+            </div>
+        </div>
+        {% if brand.models.count >= 7 %}
+        <div class="btn-wrap">
+            <div class="markiblock-btn mbtn mbtn2">
+                <span class="markiblock-btn-s1">Показать все</span>
+                <span class="markiblock-btn-s2">Скрыть все</span>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

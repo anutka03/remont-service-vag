@@ -76,6 +76,8 @@
                                                     <div class="price__row {% if service is defined and service is not null %}{{ loop.parent.loop.first and loop.first ? 'price__row--highlighted' }} {% endif %}">
                                                         {% if model is defined and model is not null %}
                                                             <p><a href="{{ path('model_service_page', {'modelSlug': model.slug, 'serviceSlug': item.slug}) }}">{{ item.name }}</a></p>
+                                                        {% elseif brand is defined and brand is not null %}
+                                                            <p><a href="{{ path('model_service_page', {'modelSlug': model.slug, 'serviceSlug': item.slug}) }}">{{ item.name }}</a></p>
                                                         {% else %}
                                                             <p><a href="{{ path('main_service', {'slug': item.slug}) }}">{{ item.name }}</a></p>
                                                         {% endif %}

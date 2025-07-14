@@ -1,49 +1,28 @@
-
-{% set chunkSize = 6 %}
-{% set total = models|length %}
-
 <section>
     <div class="repair">
         <div class="container">
             <div class="repair__wrapper">
-                <div class="repair__left title">
+                <div class="title fade-in-left">
                     <h2>
-                        Ремонт и обслуживание<br />
-                        любых моделей<br />
-                        Mercedes-benz
+                        Ремонт и обслуживание <br />
+                        любых моделей VAG Group
                     </h2>
                 </div>
-                <div class="repair__rigth">
-                    <div class="swiper repair-slider">
-                        <div class="swiper-wrapper" style="max-height: 293px;">
-                            {% for i in 0..(total // chunkSize) %}
-                                <div class="swiper-slide">
-                                    {% for j in 0..(chunkSize - 1) %}
-                                        {% set index = i * chunkSize + j %}
-                                        {% if models[index] is defined %}
-                                            {% set model = models[index] %}
-                                            <div class="repair__item">
-                                                <a href="/remont-i-servis-{{ model.slug }}/">
-                                                    <img src="{{ asset(model.image) }}" alt="" />
-                                                    <p>{{ model.nameRu }}</p>
-                                                </a>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            {% endfor %}
-                        </div>
-
-                        <div class="repair-btn">
-                            <div class="swiper-button-prev"></div>
-                            <button>Показать все</button>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
+                <div class="repair__items fade-in-up">
+                    {% for slug in slugsOrder %}
+                        {% if brandsBySlug[slug] is defined %}
+                            <div class="repair__item">
+                                <a href="{{ slug }}{#{{ path('brand_show', {'slug': slug}) }}#}">
+                                    <div class="repair__img">
+                                        {{ svgBySlug[slug]|raw }}
+                                    </div>
+                                </a>
+                                <a href="{{ slug }}{#{{ path('brand_show', {'slug': slug}) }}#}">{{ brandsBySlug[slug].name }}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </section>
-

@@ -32,81 +32,211 @@ class AppFixtures extends Fixture
         $this->connection->executeStatement('SET FOREIGN_KEY_CHECKS=1');*/
 
         /* Brand */
-        $brand = new Brand();
-        $brand->setName('Mercedes-Benz');
-        $brand->setSlug('mercedes');
-        $brand->setNameRu('Мерседес-Бенц');
-        $manager->persist($brand);
+        $brandsData = [
+            ['name' => 'Audi',       'slug' => 'audi',       'name_ru' => 'Ауди'],
+            ['name' => 'Volkswagen', 'slug' => 'volkswagen', 'name_ru' => 'Фольксваген'],
+            ['name' => 'Skoda',      'slug' => 'skoda',      'name_ru' => 'Шкода'],
+            ['name' => 'Bentley',    'slug' => 'bentley',    'name_ru' => 'Бентли'],
+            ['name' => 'Lamborghini','slug' => 'lamborghini','name_ru' => 'Ламборджини'],
+            ['name' => 'Porsche',    'slug' => 'porsche',    'name_ru' => 'Порше'],
+            ['name' => 'Seat',       'slug' => 'seat',       'name_ru' => 'Сиат'],
+        ];
 
-        /* Models */
+        foreach ($brandsData as $brandItem) {
+            $brand = new Brand();
+            $brand->setName($brandItem['name']);
+            $brand->setSlug($brandItem['slug']);
+            $brand->setNameRu($brandItem['name_ru']);
+            $manager->persist($brand);
+        }
+        $manager->flush();
+
+
+        /* MODELS */
+        $modelAudiData = [
+            ['brand_slug' => 'audi', 'slug' => 'a1', 'nameEn' => 'A1', 'nameRu' => 'А1', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'tt', 'nameEn' => 'TT', 'nameRu' => 'ТТ', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's8', 'nameEn' => 'S8', 'nameRu' => 'С8', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's6', 'nameEn' => 'S6', 'nameRu' => 'С6', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's4', 'nameEn' => 'S4', 'nameRu' => 'С4', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q7', 'nameEn' => 'Q7', 'nameRu' => 'Ку7', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a4-allroad', 'nameEn' => 'A4 Allroad', 'nameRu' => 'А4 Оллроуд', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'r8', 'nameEn' => 'R8', 'nameRu' => 'Р8', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a8', 'nameEn' => 'A8', 'nameRu' => 'А8', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a6', 'nameEn' => 'A6', 'nameRu' => 'А6', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a5', 'nameEn' => 'A5', 'nameRu' => 'А5', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a4', 'nameEn' => 'A4', 'nameRu' => 'А4', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a3', 'nameEn' => 'A3', 'nameRu' => 'А3', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a2', 'nameEn' => 'A2', 'nameRu' => 'А2', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => '80', 'nameEn' => '80', 'nameRu' => '80', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => '100', 'nameEn' => '100', 'nameRu' => '100', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs2', 'nameEn' => 'RS2', 'nameRu' => 'РС2', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's2', 'nameEn' => 'S2', 'nameRu' => 'С2', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's3', 'nameEn' => 'S3', 'nameRu' => 'С3', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's5', 'nameEn' => 'S5', 'nameRu' => 'С5', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q5', 'nameEn' => 'Q5', 'nameRu' => 'Ку5', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a7', 'nameEn' => 'A7', 'nameRu' => 'А7', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q3', 'nameEn' => 'Q3', 'nameRu' => 'Ку3', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a6-allroad', 'nameEn' => 'A6 Allroad', 'nameRu' => 'А6 Оллроуд', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q1', 'nameEn' => 'Q1', 'nameRu' => 'Ку1', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's1', 'nameEn' => 'S1', 'nameRu' => 'С1', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's7', 'nameEn' => 'S7', 'nameRu' => 'С7', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q8', 'nameEn' => 'Q8', 'nameRu' => 'Ку8', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs-q3', 'nameEn' => 'RS Q3', 'nameRu' => 'РС Ку3', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs3', 'nameEn' => 'RS3', 'nameRu' => 'РС3', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a3-sportback', 'nameEn' => 'A3 Sportback', 'nameRu' => 'А3 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a3-sedan', 'nameEn' => 'A3 Sedan', 'nameRu' => 'А3 Седан', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a4-allroad-quattro', 'nameEn' => 'A4 Allroad Quattro', 'nameRu' => 'А4 Оллроуд Кваттро', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a4-avant', 'nameEn' => 'A4 Avant', 'nameRu' => 'А4 Авант', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a5-sportback', 'nameEn' => 'A5 Sportback', 'nameRu' => 'А5 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a6-allroad-quattro', 'nameEn' => 'A6 Allroad Quattro', 'nameRu' => 'А6 Оллроуд Кваттро', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a6-avant', 'nameEn' => 'A6 Avant', 'nameRu' => 'А6 Авант', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a7-sportback', 'nameEn' => 'A7 Sportback', 'nameRu' => 'А7 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'a8-l', 'nameEn' => 'A8 L', 'nameRu' => 'А8 Лонг', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'e-tron', 'nameEn' => 'e-tron', 'nameRu' => 'Э-трон', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'e-tron-sportback', 'nameEn' => 'e-tron Sportback', 'nameRu' => 'Э-трон Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q3-sportback', 'nameEn' => 'Q3 Sportback', 'nameRu' => 'Ку3 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'q5-sportback', 'nameEn' => 'Q5 Sportback', 'nameRu' => 'Ку5 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs-q8', 'nameEn' => 'RS Q8', 'nameRu' => 'РС Ку8', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs-4-avant', 'nameEn' => 'RS 4 Avant', 'nameRu' => 'РС4 Авант', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs-5-sportback', 'nameEn' => 'RS 5 Sportback', 'nameRu' => 'РС5 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs-6-avant', 'nameEn' => 'RS 6 Avant', 'nameRu' => 'РС6 Авант', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'rs-7-sportback', 'nameEn' => 'RS 7 Sportback', 'nameRu' => 'РС7 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 's7-sportback', 'nameEn' => 'S7 Sportback', 'nameRu' => 'С7 Спортбэк', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'sq5', 'nameEn' => 'SQ5', 'nameRu' => 'СКу5', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'sq7', 'nameEn' => 'SQ7', 'nameRu' => 'СКу7', 'image' => ''],
+            ['brand_slug' => 'audi', 'slug' => 'sq8', 'nameEn' => 'SQ8', 'nameRu' => 'СКу8', 'image' => ''],
+        ];
+
+        $modelVolkswagenData = [
+            ['brand_slug' => 'volkswagen', 'slug' => 'touareg', 'nameEn' => 'Touareg', 'nameRu' => 'Туарег', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'scirocco', 'nameEn' => 'Scirocco', 'nameRu' => 'Сирокко', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'lt', 'nameEn' => 'LT', 'nameRu' => 'ЛТ', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'tiguan', 'nameEn' => 'Tiguan', 'nameRu' => 'Тигуан', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'pointer', 'nameEn' => 'Pointer', 'nameRu' => 'Пойнтер', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'phaeton', 'nameEn' => 'Phaeton', 'nameRu' => 'Фаэтон', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'vento', 'nameEn' => 'Vento', 'nameRu' => 'Венто', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'passat', 'nameEn' => 'Passat', 'nameRu' => 'Пассат', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'jetta', 'nameEn' => 'Jetta', 'nameRu' => 'Джетта', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'golf', 'nameEn' => 'Golf', 'nameRu' => 'Гольф', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'eurovan', 'nameEn' => 'Eurovan', 'nameRu' => 'ЕвроВан', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'eos', 'nameEn' => 'EOS', 'nameRu' => 'ЭОС', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'beetle', 'nameEn' => 'Beetle', 'nameRu' => 'Битл', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'caddy', 'nameEn' => 'Caddy', 'nameRu' => 'Кадди', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'sharan', 'nameEn' => 'Sharan', 'nameRu' => 'Шаран', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'bora', 'nameEn' => 'Bora', 'nameRu' => 'Бора', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'caravelle', 'nameEn' => 'Caravelle', 'nameRu' => 'Каравелла', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'polo', 'nameEn' => 'Polo', 'nameRu' => 'Поло', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'transporter', 'nameEn' => 'Transporter', 'nameRu' => 'Транспортер', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'multivan', 'nameEn' => 'Multivan', 'nameRu' => 'Мультивэн', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'crafter', 'nameEn' => 'Crafter', 'nameRu' => 'Крафтер', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'passat-cc', 'nameEn' => 'Passat CC', 'nameRu' => 'Пассат СС', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'amarok', 'nameEn' => 'Amarok', 'nameRu' => 'Амарок', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'golf-plus', 'nameEn' => 'Golf Plus', 'nameRu' => 'Гольф Плюс', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'polo-sedan', 'nameEn' => 'Polo Sedan', 'nameRu' => 'Поло Седан', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'touran', 'nameEn' => 'Touran', 'nameRu' => 'Туран', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'golf-gti', 'nameEn' => 'Golf GTI', 'nameRu' => 'Гольф ГТИ', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'lupo', 'nameEn' => 'Lupo', 'nameRu' => 'Лупо', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'newbeetle', 'nameEn' => 'Newbeetle', 'nameRu' => 'Нью Битл', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'teramont', 'nameEn' => 'Teramont', 'nameRu' => 'Терамонт', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'arteon', 'nameEn' => 'Arteon', 'nameRu' => 'Артэон', 'image' => ''],
+            ['brand_slug' => 'volkswagen', 'slug' => 'california', 'nameEn' => 'California', 'nameRu' => 'Калифорния', 'image' => ''],
+        ];
+
+        $modelSkodaData = [
+            ['brand_slug' => 'skoda', 'slug' => 'superb', 'nameEn' => 'Superb', 'nameRu' => 'Суперб', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'felicia', 'nameEn' => 'Felicia', 'nameRu' => 'Фелиция', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'octavia', 'nameEn' => 'Octavia', 'nameRu' => 'Октавия', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'fabia', 'nameEn' => 'Fabia', 'nameRu' => 'Фабия', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'roomster', 'nameEn' => 'Roomster', 'nameRu' => 'Румстер', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'rapid', 'nameEn' => 'Rapid', 'nameRu' => 'Рапид', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'yeti', 'nameEn' => 'Yeti', 'nameRu' => 'Йети', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'fabia-rs', 'nameEn' => 'Fabia RS', 'nameRu' => 'Фабия РС', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'favorit', 'nameEn' => 'Favorit', 'nameRu' => 'Фаворит', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'kodiaq', 'nameEn' => 'Kodiaq', 'nameRu' => 'Кодиак', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'octavia-a5', 'nameEn' => 'Octavia A5', 'nameRu' => 'Октавия А5', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'octavia-a7', 'nameEn' => 'Octavia A7', 'nameRu' => 'Октавия А7', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'octavia-rs', 'nameEn' => 'Octavia RS', 'nameRu' => 'Октавия РС', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'octavia-scout', 'nameEn' => 'Octavia Scout', 'nameRu' => 'Октавия Скаут', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'octavia-tour', 'nameEn' => 'Octavia Tour', 'nameRu' => 'Октавия Тур', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'karoq', 'nameEn' => 'Karoq', 'nameRu' => 'Карок', 'image' => ''],
+            ['brand_slug' => 'skoda', 'slug' => 'superb-combi', 'nameEn' => 'Superb Combi', 'nameRu' => 'Суперб Комби', 'image' => ''],
+        ];
+
+        $modelBentleyData = [
+            ['brand_slug' => 'bentley', 'slug' => 'arnage',           'nameEn' => 'Arnage',           'nameRu' => 'Арнаж',            'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'azure',            'nameEn' => 'Azure',            'nameRu' => 'Азур',             'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'bentayga',         'nameEn' => 'Bentayga',         'nameRu' => 'Бентайга',         'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'brooklands',       'nameEn' => 'Brooklands',       'nameRu' => 'Брукландс',        'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'continental',      'nameEn' => 'Continental',      'nameRu' => 'Континенталь',     'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'continental-gt',   'nameEn' => 'Continental GT',   'nameRu' => 'Континенталь ГТ',  'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'mulsanne',         'nameEn' => 'Mulsanne',         'nameRu' => 'Мульсанн',         'image' => ''],
+            ['brand_slug' => 'bentley', 'slug' => 'flying-spur',      'nameEn' => 'Flying Spur',      'nameRu' => 'Флаинг Спур',      'image' => ''],
+        ];
+
+        $modelLamborghiniData = [
+            ['brand_slug' => 'lamborghini', 'slug' => 'aventador',    'nameEn' => 'Aventador',    'nameRu' => 'Авентадор',    'image' => ''],
+            ['brand_slug' => 'lamborghini', 'slug' => 'gallardo',     'nameEn' => 'Gallardo',     'nameRu' => 'Гаярдо',        'image' => ''],
+            ['brand_slug' => 'lamborghini', 'slug' => 'huracan',      'nameEn' => 'Huracan',      'nameRu' => 'Хуракан',       'image' => ''],
+            ['brand_slug' => 'lamborghini', 'slug' => 'murcielago',   'nameEn' => 'Murcielago',   'nameRu' => 'Мурcелаго',     'image' => ''],
+            ['brand_slug' => 'lamborghini', 'slug' => 'urus',         'nameEn' => 'Urus',         'nameRu' => 'Урус',          'image' => ''],
+        ];
+
+        $modelPorscheData = [
+            ['brand_slug' => 'porsche', 'slug' => 'macan',                    'nameEn' => 'Macan',                    'nameRu' => 'Макан',                    'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'carrera',                  'nameEn' => 'Carrera',                  'nameRu' => 'Каррера',                  'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'cayman',                   'nameEn' => 'Cayman',                   'nameRu' => 'Кайман',                   'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'cayenne',                  'nameEn' => 'Cayenne',                  'nameRu' => 'Кайен',                    'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => '911',                      'nameEn' => '911',                      'nameRu' => '911',                      'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'panamera',                 'nameEn' => 'Panamera',                 'nameRu' => 'Панамера',                 'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => '718-boxster',              'nameEn' => '718 Boxster',              'nameRu' => '718 Бокстер',              'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => '718-cayman',               'nameEn' => '718 Cayman',               'nameRu' => '718 Кайман',               'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'panamera-sport-turismo',   'nameEn' => 'Panamera Sport Turismo',   'nameRu' => 'Панамера Спорт Туризмо',   'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'taycan',                   'nameEn' => 'Taycan',                   'nameRu' => 'Тайкан',                   'image' => ''],
+            ['brand_slug' => 'porsche', 'slug' => 'taycan-cross-turismo',     'nameEn' => 'Taycan Cross Turismo',     'nameRu' => 'Тайкан Кросс Туризмо',     'image' => ''],
+        ];
+
+        $modelSeatData = [
+            ['brand_slug' => 'seat', 'slug' => 'alhambra', 'nameEn' => 'Alhambra', 'nameRu' => 'Альхамбра', 'image' => ''],
+            ['brand_slug' => 'seat', 'slug' => 'altea',    'nameEn' => 'Altea',    'nameRu' => 'Альтеа',    'image' => ''],
+            ['brand_slug' => 'seat', 'slug' => 'ibiza',    'nameEn' => 'Ibiza',    'nameRu' => 'Ибица',    'image' => ''],
+            ['brand_slug' => 'seat', 'slug' => 'leon',     'nameEn' => 'Leon',     'nameRu' => 'Леон',     'image' => ''],
+            ['brand_slug' => 'seat', 'slug' => 'toledo',   'nameEn' => 'Toledo',   'nameRu' => 'Толедо',   'image' => ''],
+        ];
+
+        $allModels = array_merge(
+            $modelAudiData,
+            $modelVolkswagenData,
+            $modelSkodaData,
+            $modelBentleyData,
+            $modelLamborghiniData,
+            $modelPorscheData,
+            $modelSeatData
+        );
+
         $models = [];
-        foreach ([
-                     ['slug' => 'a-class', 'nameEn' => 'A-Class', 'nameRu' => 'А-Класс', 'image' => 'img/repair/A.png'],
-                     ['slug' => 'b-class', 'nameEn' => 'B-Class', 'nameRu' => 'B-Класс', 'image' => 'img/repair/B.png'],
-                     ['slug' => 'c-class', 'nameEn' => 'C-Class', 'nameRu' => 'С-Класс', 'image' => 'img/repair/C.png'],
-                     ['slug' => 'cl', 'nameEn' => 'CL', 'nameRu' => 'CL', 'image' => 'img/repair/CL.png'],
-                     ['slug' => 'cla', 'nameEn' => 'CLA', 'nameRu' => 'CLA', 'image' => 'img/repair/CLA.png'],
-                     ['slug' => 'clc', 'nameEn' => 'CLC', 'nameRu' => 'CLC', 'image' => 'img/repair/CLC.png'],
-                     ['slug' => 'clk', 'nameEn' => 'CLK', 'nameRu' => 'CLK', 'image' => 'img/repair/CLK.png'],
-                     ['slug' => 'cls', 'nameEn' => 'CLS', 'nameRu' => 'CLS', 'image' => 'img/repair/CLS.png'],
-                     ['slug' => 'e-class', 'nameEn' => 'E-Class', 'nameRu' => 'E-Класс', 'image' => 'img/repair/E.png'],
-                     ['slug' => 'g-class', 'nameEn' => 'G-Class', 'nameRu' => 'G-Класс', 'image' => 'img/repair/G.png'],
-                     ['slug' => 'gl', 'nameEn' => 'GL', 'nameRu' => 'GL', 'image' => 'img/repair/GL.png'],
-                     ['slug' => 'gla', 'nameEn' => 'GLA', 'nameRu' => 'GLA', 'image' => 'img/repair/GLA.png'],
-                     ['slug' => 'gle', 'nameEn' => 'GLE', 'nameRu' => 'GLE', 'image' => 'img/repair/GLE.png'],
-                     ['slug' => 'glk', 'nameEn' => 'GLK', 'nameRu' => 'GLK', 'image' => 'img/repair/GLK.png'],
-                     ['slug' => 'ml', 'nameEn' => 'ML', 'nameRu' => 'ML', 'image' => 'img/repair/ML.png'],
-                     ['slug' => 'r-class', 'nameEn' => 'R', 'nameRu' => 'R-Класс', 'image' => 'img/repair/R.png'],
-                     ['slug' => 's-class', 'nameEn' => 'S-Class', 'nameRu' => 'S-Класс', 'image' => 'img/repair/S.png'],
-                     ['slug' => 'sl', 'nameEn' => 'SL', 'nameRu' => 'SL', 'image' => 'img/repair/SL.png'],
-                     ['slug' => 'slk', 'nameEn' => 'SLK', 'nameRu' => 'SLK', 'image' => 'img/repair/SLK.png'],
-                     ['slug' => 'slr', 'nameEn' => 'SLR', 'nameRu' => 'SLR', 'image' => 'img/repair/SLR.png'],
-                     ['slug' => 'sls', 'nameEn' => 'SLS', 'nameRu' => 'SLS', 'image' => 'img/repair/SLS.png'],
-                     ['slug' => '190', 'nameEn' => '190 (W201)', 'nameRu' => '190 (W201)', 'image' => 'img/repair/190_W201.png'],
-                     ['slug' => 'amg-gt', 'nameEn' => 'AMG GT', 'nameRu' => 'AMG GT', 'image' => 'img/repair/AMG_GT.png'],
-                     ['slug' => 'c-class-amg', 'nameEn' => 'C-Klasse AMG', 'nameRu' => 'С-Класс AMG', 'image' => 'img/repair/C-Klasse-AMG.png'],
-                     ['slug' => 'cls-class-amg', 'nameEn' => 'CLS-Klasse AMG', 'nameRu' => 'CLS-Класс AMG', 'image' => 'img/repair/CLS-Klasse.png'],
-                     ['slug' => 'e-class-amg', 'nameEn' => 'E-Klasse AMG', 'nameRu' => 'E-Класс AMG', 'image' => 'img/repair/E-Klasse.png'],
-                     ['slug' => 'g-class-amg', 'nameEn' => 'G-Klasse AMG', 'nameRu' => 'G-Класс AMG', 'image' => 'img/repair/G-Klasse.png'],
-                     ['slug' => 'glc', 'nameEn' => 'GLC', 'nameRu' => 'GLC', 'image' => 'img/repair/G-Klasse.png'],
-                     ['slug' => 'glc-coupe', 'nameEn' => 'GLC Coupe', 'nameRu' => 'GLC Купе', 'image' => 'img/repair/GLC.png'],
-                     ['slug' => 'gle-coupe', 'nameEn' => 'GLE Coupe', 'nameRu' => 'GLE Купе', 'image' => 'img/repair/GLE.png'],
-                     ['slug' => 'gls-class', 'nameEn' => 'GLS-Klasse', 'nameRu' => 'GLS-Класс', 'image' => 'img/repair/G-Klasse.png'],
-                     ['slug' => 'm-class', 'nameEn' => 'M-Klasse', 'nameRu' => 'M-Класс', 'image' => 'img/repair/M-Klasse.png'],
-                     ['slug' => 'maybach-s-class', 'nameEn' => 'Maybach S-Klasse', 'nameRu' => 'Майбах S-Класс', 'image' => 'img/repair/S-class-maybach.png'],
-                     ['slug' => 's-class-amg', 'nameEn' => 'S-Klasse AMG', 'nameRu' => 'S-Класс AMG', 'image' => 'img/repair/S-Klasse_AMG.png'],
-                     ['slug' => 'v-class', 'nameEn' => 'V-Klasse', 'nameRu' => 'V-Класс', 'image' => 'img/repair/V-Klasse.png'],
-                     ['slug' => 'viano', 'nameEn' => 'Viano', 'nameRu' => 'Viano', 'image' => 'img/repair/Viano.png'],
-                     ['slug' => 'vito', 'nameEn' => 'Vito', 'nameRu' => 'Vito', 'image' => 'img/repair/Vito.webp'],
-                     ['slug' => 'w124', 'nameEn' => 'W124', 'nameRu' => 'W124', 'image' => 'img/repair/W124.png'],
-                     ['slug' => 'x-class', 'nameEn' => 'X-Klasse', 'nameRu' => 'X-Класс', 'image' => 'img/repair/X-Klasse.png'],
-                     ['slug' => 'sprinter', 'nameEn' => 'Sprinter', 'nameRu' => 'Sprinter', 'image' => 'img/repair/X-Klasse.png'],
-                     ['slug' => 'sprinter-classic', 'nameEn' => 'Sprinter Classic', 'nameRu' => 'Sprinter Classic', 'image' => 'img/repair/X-Klasse.png'],
-                     ['slug' => 'vario', 'nameEn' => 'Vario', 'nameRu' => 'Vario', 'image' => 'img/repair/Vario.png'],
-                     ['slug' => 'a-class-sedan', 'nameEn' => 'A-Class Sedan', 'nameRu' => 'A-Класс Седан', 'image' => 'img/repair/A-class-sedan.png'],
-                     ['slug' => 'cla-wagon', 'nameEn' => 'CLA Универсал', 'nameRu' => 'CLA Универсал', 'image' => 'img/repair/CLA_universal.png'],
-                     ['slug' => 'e-class-cabrio', 'nameEn' => 'E-Class Кабриолет', 'nameRu' => 'E-Класс Кабриолет', 'image' => 'img/repair/E-class-cacbriolet.png'],
-                     ['slug' => 'e-class-coupe', 'nameEn' => 'E-Class купе', 'nameRu' => 'E-Класс купе', 'image' => 'img/repair/E-class-kupe.png'],
-                     ['slug' => 'e-class-wagon', 'nameEn' => 'E-Class Универсал', 'nameRu' => 'E-Класс Универсал', 'image' => 'img/repair/E-class-universal.png'],
-                     ['slug' => 'glb', 'nameEn' => 'GLB', 'nameRu' => 'GLB', 'image' => 'img/repair/GLB.png'],
-                     ['slug' => 'gls-maybach', 'nameEn' => 'GLS Maybach', 'nameRu' => 'GLS Maybach', 'image' => 'img/repair/GLS-Maybach.png'],
-                     ['slug' => 's-class-maybach', 'nameEn' => 'S-Class Maybach', 'nameRu' => 'S-Класс Maybach', 'image' => 'img/repair/S-class-maybach.png'],
-                 ] as $data) {
+        foreach ($allModels as $model_item) {
+            $brand = $manager->getRepository(Brand::class)->findOneBy(['slug' => $model_item['brand_slug']]);
+            //echo "Достаем бренд с ID: " . $brand->slug . PHP_EOL;
             $model = new Model();
             $model->setBrand($brand);
-            $model->setSlug($data['slug']);
-            $model->setNameEn($data['nameEn']);
-            $model->setNameRu($data['nameRu']);
-            $model->setImage($data['image']);
+            $model->setSlug($model_item['slug']);
+            $model->setNameEn($model_item['nameEn']);
+            $model->setNameRu($model_item['nameRu']);
+            $model->setImage($model_item['image']);
             $manager->persist($model);
             $models[] = $model;
         }
 
 
+
+        /* SERVICES */
+
         $serviceData = [
             [
                 'category' => ['name' => 'Техническое обслуживание', 'slug' => 'tekhnicheskoe-obsluzhivanie'],
                 'services' => [
+                    ['name' => 'Техническое обслуживание', 'slug' => 'zamena-pompy-zamena-vodyanogo-nasosa', 'base_price' => 1500],
                     ['name' => 'Замена помпы (замена водяного насоса)', 'slug' => 'zamena-pompy-zamena-vodyanogo-nasosa', 'base_price' => 2250],
                     ['name' => 'Замена свечей зажигания', 'slug' => 'zamena-svechey-zazhiganiya', 'base_price' => 600],
                     ['name' => 'Чистка дроссельной заслонки', 'slug' => 'chistka-drosselnoy-zaslonki', 'base_price' => 750],
@@ -583,7 +713,7 @@ class AppFixtures extends Fixture
                 $service->setCategory($category);
                 $service->setName($serviceInfo['name']);
                 $service->setSlug($serviceInfo['slug']);
-                $service->setBasePrice($serviceInfo['base_price']);
+                $service->setBasePrice(round($serviceInfo['base_price'] * 0.95));
                 $manager->persist($service);
             }
         }
@@ -601,18 +731,19 @@ class AppFixtures extends Fixture
         $promoData = [
             [
                 'title' => 'скидка 25% по воскресеньям',
-                'description' => '',
+                'description' => 'На весь ремонт и обслуживание #BRAND_RU# #MODEL_RU#',
                 'active' => true,
             ],
             [
                 'title' => 'бесплатная диагностика подвески при первом посещении',
-                'description' => '',
+                'description' => ' диагностика ходовой части #BRAND_EN# #MODEL_EN# в подарок',
                 'active' => true,
             ],
             [
                 'title' => 'чистка двигателя грецких орехом',
-                'description' => 'Все автомобили c дизельными двигателями системы
-                          Common Rail + промывка и ремонт форсунок',
+                'description' => 'Все автомобили #BRAND_EN# c дизельными двигателями системы
+Common Rail + промывка и ремонт форсунок
+',
                 'active' => true,
             ],
             [
@@ -629,8 +760,7 @@ class AppFixtures extends Fixture
             ],
             [
                 'title' => 'Бесплатная замена масла и фильтров',
-                'description' => 'При покупке масла и масляного фильтра в нашем
-                          сервисе, замена масла и фильтра #BRAND_EN# #MODEL_EN# бесплатно',
+                'description' => 'При покупке масла и масляного фильтра в нашем сервисе, замена масла и фильтра бесплатно',
                 'active' => true,
             ],
         ];

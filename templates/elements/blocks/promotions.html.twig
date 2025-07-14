@@ -1,57 +1,40 @@
-{% if promotions is defined and promotions is not empty %}
-    <a id="promo"></a>
-    {% set slides = promotions|batch(6) %}
-    <section>
-        <div class="promotion">
-            <div class="container">
-                <div class="promotion__wrapper">
-                    <div class="promotion__title">
+<section>
+    <div class="promotion">
+        <div class="container">
+            <div class="promotion__wrapper">
+                <div class="swiper promotionSwiper">
+                    <div class="title fade-in-left">
                         <h2>наши акции</h2>
                     </div>
-                    <div class="swiper promotionSwiper">
-                        <div class="swiper-wrapper">
-                            {% for slideIndex, slide in slides %}
-                                <div class="swiper-slide">
-                                    {% for promoIndex, promo in slide %}
-                                        {% set globalIndex = slideIndex * 6 + promoIndex %}
-                                        <div class="promotion__item" id="item{{ globalIndex + 1 }}">
-                                            <div class="promotion__text">
-                                                <p>{{ promo.title }}</p>
-                                                <span>
-                                                    {% if model is defined and model is not null %}
-                                                        {{ promo.description
-                                                        |replace({
-                                                            '#BRAND_EN#': model.brand.name ?? '',
-                                                            '#MODEL_EN#': model.nameEn ?? ''
-                                                        }) }}
-                                                    {% elseif brand is defined and brand is not null %}
-                                                        {{ promo.description
-                                                        |replace({
-                                                            '#BRAND_EN#': brand.name ?? '',
-                                                            '#MODEL_EN#': ''
-                                                        }) }}
-                                                    {% else %}
-                                                        {{ promo.description
-                                                        |replace({
-                                                            '#BRAND_EN#': '',
-                                                            '#MODEL_EN#': ''
-                                                        }) }}
-                                                    {% endif %}
-                                                </span>
-                                            </div>
-                                            <button class="open-form-btn">записаться</button>
+                    <div class="swiper-wrapper fade-in-up">
+                        {% for promotionChunk in promotions|batch(6, []) %}
+                            <div class="swiper-slide">
+                                {% for promotion in promotionChunk %}
+                                    <div class="promotion__item">
+                                        <div class="promotion__text">
+                                            <img src="{{ asset('img/promo.png') }}" alt="" />
+                                            <p>{{ promotion.title }}</p>
+                                            {% if promotion.description is defined %}
+                                                <span>{{ promotion.description|replace({
+                                                        '#BRAND_EN#': brand.name ?? '',
+                                                        '#MODEL_EN#': model.nameEn ?? '',
+                                                        '#BRAND_RU#': brand.nameRu ?? '',
+                                                        '#MODEL_RU#': model.nameRu ?? '',
+                                                    }) }}</span>
+                                            {% endif %}
                                         </div>
-                                    {% endfor %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-pagination"></div>
+                                        <button class="open-form-btn">записаться</button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
                     </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-    </section>
-{% endif %}
-
+    </div>
+</section>

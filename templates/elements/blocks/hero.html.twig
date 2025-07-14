@@ -2,49 +2,27 @@
     <div class="main">
         <div class="container">
             <div class="main__wrapper">
-                <div class="main-top">
-                    <div class="main-top__left">
-                        <p>С ГАРАНТИЕЙ ДО 3 ЛЕТ</p>
-                        {% if (service is defined and service is not null) and (model is defined and model is not null) %}
-                            <h1>{{ service.name }} {{ model.brand.nameRu }} {{ model.nameRu }} ({{ model.brand.name }} {{ model.nameEn }}) в Москве</h1>
-                        {% elseif (service is defined and service is not null) and (brand is defined and brand is not null) %}
-                            <h1>{{ service.name }} {{ brand.nameRu }} ({{ brand.name }}) в Москве</h1>
-                        {% elseif model is defined and model is not null %}
-                            <h1>Ремонт и сервис {{ model.brand.name}} {{ model.nameEn }} ({{ model.brand.nameRu }} {{ model.nameRu }}) в Москве</h1>
+                <div class="main__title">
+                    <h1>{% if service %}
+                        {{ service.name }}
                         {% else %}
-                        <h1>Сервис Грац-Авто <br />Мерседес в Москве</h1>
+                        Ремонт и сервис
                         {% endif %}
-                    </div>
-                    <div class="main-top__rigth">
-                        <p>
-                            <img src="{{ asset('img/main/done_all.svg') }}" alt="" /><span
-                            >Гарантия до 3 лет</span
-                            >
-                        </p>
-                        <p>
-                            <img src="{{ asset('img/main/done_all.svg') }}" alt="" /><span
-                            >Оригинальные запчасти</span
-                            >
-                        </p>
-                        <p>
-                            <img src="{{ asset('img/main/done_all.svg') }}" alt="" /><span
-                            >Честная стоимость</span
-                            >
-                        </p>
-                    </div>
+                        {% if brand is defined %}
+                            {{ brand.name }} ({{ brand.nameRu }})
+                            {% if model is defined %}
+                                {{ model.nameEn }}
+                            {% endif %}
+                        {% else %}volkswagen {% endif %} в Москве</h1>
+                    <span
+                    >С ГАРАНТИЕЙ <br />
+                  ДО 3 ЛЕТ</span
+                    >
                 </div>
-                <div class="main-bottom">
-                    <div class="main-bottom__links">
-                        <div class="main-bottom__link">
-                            <a href="#" class="open-form-btn">Заказать диагностику</a>
-                        </div>
-                        <div class="main-bottom__link">
-                            <a href="#" class="open-form-btn">Нужен эвакуатор</a>
-                        </div>
-                        <div class="main-bottom__link">
-                            <a href="#" class="open-form-btn">Получить консультацию</a>
-                        </div>
-                    </div>
+                <div class="main__btns">
+                    <button class="open-form-btn" data-title="Получить консультацию">Получить консультацию</button>
+                    <button class="open-form-btn" data-title="Заказать диагностику">Заказать диагностику</button>
+                    <button class="open-form-btn" data-title="Нужен эвакуатор">Нужен эвакуатор</button>
                 </div>
             </div>
         </div>

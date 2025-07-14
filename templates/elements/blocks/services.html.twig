@@ -1,40 +1,107 @@
 {% if servicesCategory is not empty %}
-    <a id="services"></a>
 <section>
     <div class="services">
         <div class="container">
             <div class="services__wrapper">
-                <div class="services__title title">
-                    {% if model is defined and model is not null %}
-                        <h2>Услуги и цены автосервиса Грац-Авто {{ model.brand.nameRu }} {{ model.nameRu }} </h2>
-                    {% else %}
-                    <h2>
-                        Услуги и цены Сервиса<br />
-                        Грац-Авто Мерседес в москве
+                <div class="title fade-in-left">
+                    <h2>Цена на ремонт и обслуживание {% if brand is defined %}
+                            {{ brand.name ~ ' (' ~ brand.nameRu ~ ')' }}
+                        {% endif %}
+                        {% if model is defined %}
+                            {{ model.nameEn ~ ' (' ~ model.nameRu ~ ')' }}
+                        {% endif %}
                     </h2>
-                    {% endif %}
                 </div>
-                <div class="services__items">
-                    {% for key, category in servicesCategory %}
-                        {% if model is defined and model is not null %}
-                            <a href="{{ path('model_service_page', {'modelSlug': model.slug, 'serviceSlug': category.slug}) }}" class="services__item">
-                         {% else %}
-                             <a href="{{ path('main_service', {'slug': category.slug}) }}" class="services__item">
-                         {% endif %}
-                                <p>{{ category.name }}</p>
-                                <div class="services__img">
-                                    <img src="{{ asset('img/services/' ~ (key + 1) ~ '.png') }}"
-                                         alt="{{ category.name }}"
-                                         onerror="this.onerror=null;this.src='{{ asset('img/services/default.png') }}';" />
-                                </div>
-                            </a>
 
+                <ul class="accordion fade-in-up">
+                    {% for key, category in servicesCategory %}
+                        {% set isCurrentCategory = false %}
+                        {% if service is defined and service is not null %}
+                            {% if service.category is defined and service.category and service.category.id == category.id %}
+                                {% set isCurrentCategory = true %}
+                                {# service — категория, совпадающая с category #}
+                            {% elseif service.services is defined and service.id == category.id %}
+                                {% set isCurrentCategory = true %}
+                            {% endif %}
+                        {% elseif key == 0 %}
+                            {% set isCurrentCategory = true %}
+                        {% endif %}
+
+                        {# ЗДЕСЬ ЕЩЕ ПОДУМАТЬ #}
+
+                        {% if isCurrentCategory or (showAllCategories is defined and showAllCategories) %}
+                        <li class="accordion__item{% if isCurrentCategory %} accordion__item--active{% endif %}">
+                        {% else %}
+                         <li class="accordion__item" style="display: none;">
+                         {% endif %}
+                            <button class="accordion__header">
+                    <span
+                    ><img src="{{ asset('img/services/Frame 1.png') }}" alt="" /> {{ category.name }}</span
+                    >
+                            </button>
+                            {#<div class="accordion__body">
+                                <div class="services-grid">
+                                    {% for categoryItem in category.services %}
+                                        <div class="service-item">
+                                        {% if brand is defined and brand is not null %}
+                                            <div class="service-name"><a href="{{ path('brand_model_or_service', {'brandSlug': brand.slug, 'slug': categoryItem.slug}) }}">{{ categoryItem.name }}</a></div>
+                                         {% else %}
+                                                <div class="service-name">{{ categoryItem.name }}</div>
+                                         {% endif %}
+
+                                        <div class="service-price">от {{ categoryItem.basePrice }} ₽</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>#}
+                        <div class="accordion__body">
+                            <div class="services-grid">
+
+                                {# Сначала — активный сервис (если он есть и принадлежит этой категории) #}
+                                {% if service is defined and service.category.id == category.id %}
+                                    <div class="service-item">
+                                        {% if brand is defined and brand is not null %}
+                                            <div class="service-name">
+                                                <a href="{{ path('brand_model_or_service', {'brandSlug': brand.slug, 'slug': service.slug}) }}">
+                                                    {{ service.name }}
+                                                </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="service-name">{{ service.name }}</div>
+                                        {% endif %}
+                                        <div class="service-price">от {{ service.basePrice }} ₽</div>
+                                    </div>
+                                {% endif %}
+
+                                {# Теперь — все остальные, кроме активного #}
+                                {% for categoryItem in category.services %}
+                                    {% if service is not defined or categoryItem.id != service.id %}
+                                        <div class="service-item">
+                                            {% if brand is defined and brand is not null %}
+                                                <div class="service-name">
+                                                    {% if brand is defined and model is defined %}
+                                                    <a href="{{ path('model_service', {'brandSlug': brand.slug, 'modelSlug': model.slug, 'slug': categoryItem.slug}) }}">
+                                                        {% else %}
+                                                    <a href="{{ path('brand_model_or_service', {'brandSlug': brand.slug, 'slug': categoryItem.slug}) }}">
+                                                        {% endif %}
+                                                        {{ categoryItem.name }}
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="service-name">{{ categoryItem.name }}</div>
+                                            {% endif %}
+                                            <div class="service-price">от {{ categoryItem.basePrice }} ₽</div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        </li>
                     {% endfor %}
 
-                </div>
-                <div class="services__btn">
-                    <button>Показать все</button>
-                </div>
+                </ul>
             </div>
         </div>
     </div>

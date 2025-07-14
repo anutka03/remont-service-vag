@@ -1,4 +1,4 @@
-.price__row--highlighted p a {
+/*.price__row--highlighted p a {
     color: #BF020F;
 }
 .main-top__left h1 {
@@ -7,7 +7,7 @@
 
 .button-section {
     padding: 40px 20px;
-    background-color: #f9f9f9; /* фон для блока, можно изменить */
+    background-color: #f9f9f9; !* фон для блока, можно изменить *!
     text-align: center;
 }
 
@@ -28,7 +28,7 @@
     width: 300px;
 }
 
-/* Тёмная кнопка */
+!* Тёмная кнопка *!
 .button--dark {
     background-color: #000;
     color: #fff;
@@ -41,7 +41,7 @@
     border: 2px solid #000;
 }
 
-/* Светлая кнопка */
+!* Светлая кнопка *!
 .button--light {
     background-color: #fff;
     color: #000;
@@ -74,7 +74,7 @@
     padding-top: 50px;
 }
 
-/* Header mobile button */
+!* Header mobile button *!
 .header-feedback__mobile {
     display: none;
 }
@@ -121,6 +121,125 @@
     .header-feedback__mobile {
         display: block;
     }
+}*/
+
+.markiblock-spis {
+    display: none;
+    padding-bottom: 50px;
+}
+
+.markiblock {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.markiblock-slider {
+    position: relative;
+    margin-bottom: 0;
+}
+.markiblock-slider .markiblock-card {
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    padding: 10px;
+}
+markiblock .btn-wrap .mbtn {
+    padding-bottom: 0;
+    padding-top: 0;
+    line-height: 48px;
+    height: 48px;
+    font-size: 15px;
+}
+mbtn2 {
+    border: 1px solid #0039a6;
+    color: #0039a6;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    background: 0 0;
+}
+.markiblock .slick-prev:before {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: url(../img/icon/slide-left-white.svg) center no-repeat;
+    background-size: 25%;
+    top: 0;
+    left: 0;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.markiblock .slick-prev, .markiblock .slick-next {
+    background-color: #d52b1e;
+}
+.markiblock .slick-prev, .markiblock .slick-prev:hover {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    bottom: -75px;
+    left: 37%;
+    top: auto;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.markiblock .slick-next:before {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: url(../img/icon/slide-right-white.svg) center no-repeat;
+    background-size: 25%;
+    top: 0;
+    left: 0;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.markiblock .slick-next, .markiblock .slick-next:hover {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    bottom: -75px;
+    top: auto;
+    right: 37%;
+}
+.markiblock .btn-wrap {
+    text-align: center;
+}
+.markiblock .btn-wrap .mbtn .markiblock-btn-s2 {
+    display: none;
+}
+.mbtn2 {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    background: 0 0;
+}
+.mbtn {
+    background-color: transparent;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 30px;
+}
+.markiblock-slider {
+    padding-bottom: 50px;
+}
+.markiblock-card-img picture img{
+    width: 190px;
+}
+.container {
+    max-width: 1320px;
 }
 
 
