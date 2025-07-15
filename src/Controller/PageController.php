@@ -143,7 +143,7 @@ final class PageController extends AbstractController
         // Попробуем найти услугу модели
         $service = $serviceRepo->findOneBy(['slug' => $slug]);
         if ($service) {
-            $template = $templates->getTemplate('service');
+            $template = $templates->getTemplate('service_model');
             $meta = $generator->generate($template, [
                 'brand_en' => $brand->getName(),
                 'brand_ru' => $brand->getNameRu(),
