@@ -1,4 +1,5 @@
 {% if servicesCategory is not empty %}
+    <a id="services"></a>
 <section>
     <div class="services">
         <div class="container">
@@ -35,9 +36,7 @@
                          <li class="accordion__item" style="display: none;">
                          {% endif %}
                             <button class="accordion__header">
-                    <span
-                    ><img src="{{ asset('img/services/Frame 1.png') }}" alt="" /> {{ category.name }}</span
-                    >
+                    <span><img src="{{ asset('img/services/Frame_1-'~ key ~'.png') }}" alt="" /> {{ category.name }}</span>
                             </button>
                             {#<div class="accordion__body">
                                 <div class="services-grid">

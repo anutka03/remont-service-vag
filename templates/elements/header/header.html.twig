@@ -1,38 +1,30 @@
-{#<header class="header">
-    <div class="container">
-        <div class="header__inner">
-            {{ include('elements/header/header-top.html.twig') }}
-            {{ include('elements/header/header-bottom.html.twig') }}
-        </div>
-    </div>
-</header>#}
 <header class="header">
     <div class="container">
         <div class="header__wrapper">
             <div class="header__top">
                 <div class="block-item">
                     <div class="block-item__item">
-                        <img src="img/header/place.png" alt="" />
+                        <img src="{{ asset('img/header/place.png')}}" alt="" />
                         <p>ул. Ибрагимова 31 ас4</p>
                     </div>
                     <div class="block-item__item">
-                        <img src="img/header/local_phone.png" alt="" />
-                        <a href="+74994330728">+7 (499) 433-07-28</a>
+                        <img src="{{ asset('img/header/local_phone.png')}}" alt="" />
+                        <a href="tel:+74994330728">+7 (499) 433-07-28</a>
                     </div>
                 </div>
                 <div class="block-item">
                     <div class="block-item__item">
-                        <img src="img/header/place.png" alt="" />
+                        <img src="{{ asset('img/header/place.png')}}" alt="" />
                         <p>1-й Силикатный проезд, 19/2с26</p>
                     </div>
                     <div class="block-item__item">
-                        <img src="img/header/local_phone.png" alt="" />
-                        <a href="+74951912074">+7 (495) 191-20-74</a>
+                        <img src="{{ asset('img/header/local_phone.png')}}" alt="" />
+                        <a href="tel:+74951912074">+7 (495) 191-20-74</a>
                     </div>
                 </div>
                 <div class="time">
                     <div class="time__item">
-                        <img src="img/header/schedule.png" alt="" />
+                        <img src="{{ asset('img/header/schedule.png')}}" alt="" />
                         <p>09:00-21:00</p>
                     </div>
                 </div>
@@ -41,46 +33,46 @@
                 </div>
                 <div class="burger">
                     <button class="menu-open">
-                        <img src="img/header/menu.svg" alt="" />
+                        <img src="{{ asset('img/header/menu.svg')}}" alt="" />
                     </button>
                 </div>
                 <div class="menu">
                     <div class="menu__close">
                         <button class="menu-close">
-                            <img src="img/header/close.svg" alt="" />
+                            <img src="{{ asset('img/header/close.svg')}}" alt="" />
                         </button>
                     </div>
                     <ul class="menu__list">
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Услуги</a></li>
-                        <li><a href="#">Корпоративным клиентам</a></li>
-                        <li><a href="#">Отзывы</a></li>
-                        <li><a href="#">Сертификаты</a></li>
-                        <li><a href="#">Фотогалерея</a></li>
-                        <li><a href="#">Цены</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="{{ path('app_home') }}#about">О компании</a></li>
+                        <li><a href="{{ path('app_home') }}services#">Услуги</a></li>
+                        <li><a href="{{ path('korporativnym_klientam') }}">Корпоративным клиентам</a></li>
+                        <li><a href="{{ path('app_home') }}#reviews">Отзывы</a></li>
+                        <li><a href="{{ path('app_home') }}#sert">Сертификаты</a></li>
+                        <li><a href="{{ path('app_home') }}#">Фотогалерея</a></li>
+                        <li><a href="{{ path('app_home') }}#services">Цены</a></li>
+                        <li><a href="{{ path('app_home') }}#contacts">Контакты</a></li>
                     </ul>
                     <div class="menu__address">
                         <div class="menu__address-item">
-                            <img src="img/header/place.png" alt="" />
+                            <img src="{{ asset('img/header/place.png')}}" alt="" />
                             <p>ул. Ибрагимова 31 ас4</p>
                         </div>
                         <div class="menu__address-item">
-                            <img src="img/header/local_phone.png" alt="" />
+                            <img src="{{ asset('img/header/local_phone.png')}}" alt="" />
                             <a href="+74994330728">+7 (499) 433-07-28</a>
                         </div>
                         <div class="menu__address-item">
-                            <img src="img/header/place.png" alt="" />
+                            <img src="{{ asset('img/header/place.png')}}" alt="" />
                             <p>1-й Силикатный проезд, 19/2с26</p>
                         </div>
                         <div class="menu__address-item">
-                            <img src="img/header/local_phone.png" alt="" />
+                            <img src="{{ asset('img/header/local_phone.png')}}" alt="" />
                             <a href="+74951912074">+7 (495) 191-20-74</a>
                         </div>
                     </div>
                     <div class="menu__time">
                         <div class="menu__time-item">
-                            <img src="img/header/schedule.png" alt="" />
+                            <img src="{{ asset('img/header/schedule.png')}}" alt="" />
                             <p>09:00-21:00</p>
                         </div>
                     </div>
@@ -89,14 +81,14 @@
             <div class="header__bottom">
                 <nav class="header__nav">
                     <ul class="header__list">
-                        <li><a href="#about">О компании</a></li>
-                        <li><a href="#">Услуги</a></li>
-                        <li><a href="#">Корпоративным клиентам</a></li>
-                        <li><a href="#">Отзывы</a></li>
-                        <li><a href="#">Сертификаты</a></li>
+                        <li><a href="{{ path('app_home') }}#about">О компании</a></li>
+                        <li><a href="{{ path('app_home') }}#services">Услуги</a></li>
+                        <li><a href="{{ path('korporativnym_klientam') }}">Корпоративным клиентам</a></li>
+                        <li><a href="{{ path('app_home') }}#reviews">Отзывы</a></li>
+                        <li><a href="{{ path('app_home') }}#sert">Сертификаты</a></li>
                         <li><a href="#">Фотогалерея</a></li>
-                        <li><a href="#">Цены</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="{{ path('app_home') }}#services">Цены</a></li>
+                        <li><a href="{{ path('app_home') }}#contacts">Контакты</a></li>
                     </ul>
                 </nav>
             </div>

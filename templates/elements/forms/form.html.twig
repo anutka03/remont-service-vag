@@ -1,27 +1,28 @@
 <section>
-    <div class="form">
+    <div class="form form_footer">
         <div class="container">
             <div class="form__wrapper fade-in-up">
                 <div class="form__modal">
                     <div class="form__content">
                         <h2>Оставить заявку</h2>
-                        <form>
+                        <form id="feedback-form_footer">
                             <div class="form__top">
-                                <input type="text" placeholder="Ваше имя" />
+                                <input type="text" placeholder="Ваше имя" name="username" required />
                                 <input
                                         type="tel"
                                         placeholder="Номер телефона"
                                         class="phone"
+                                        name="phone" required
                                 />
                             </div>
                             <div class="form__center">
                                 <p>Какой сервис вам будет удобен?</p>
                                 <label>
-                                    <input type="radio" name="address" checked />
+                                    <input type="radio" name="address" checked value="1-й Силикатный проезд, 19/2с26" />
                                     <span>1-й Силикатный проезд, 19/2с26</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="address" />
+                                    <input type="radio" name="address" value="ул. Ибрагимова 31 ас4" />
                                     <span>ул. Ибрагимова 31 ас4</span>
                                 </label>
                             </div>
@@ -35,3 +36,64 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const feedbackFormWrapperFooter = document.querySelector(".form_footer");
+        const phoneInputFooter = feedbackFormWrapperFooter.querySelector("input.phone");
+        const closeBtnFooter = feedbackFormWrapperFooter.querySelector(".feedback-close");
+        const feedbackFormFooter = document.getElementById("feedback-form_footer");
+
+        if (closeBtnFooter) {
+            closeBtnFooter.addEventListener('click', function () {
+                feedbackFormWrapperFooter.classList.remove("active");
+                document.body.classList.remove("lock");
+            });
+        }
+
+        if (phoneInputFooter) {
+            // Фокус на телефон при загрузке
+            phoneInputFooter.focus();
+
+            feedbackFormWrapperFooter.addEventListener("click", function (event) {
+                const target = event.target;
+                if (
+                    target.tagName !== "INPUT" &&
+                    target.tagName !== "BUTTON" &&
+                    !target.closest("button") &&
+                    !target.closest("input")
+                ) {
+                    phoneInputFooter.focus();
+                    phoneInputFooter.setSelectionRange(0, 0);
+                }
+            });
+        }
+
+        if (feedbackFormFooter) {
+            feedbackFormFooter.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(feedbackFormFooter);
+                formData.append('page', window.location.pathname);
+
+                fetch('/send_mail', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Заявка успешно отправлена!');
+                            feedbackFormFooter.reset();
+                        } else {
+                            alert('Произошла ошибка. Попробуйте позже.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Ошибка:', error);
+                        alert('Ошибка при отправке формы.');
+                    });
+            });
+        }
+    });
+</script>

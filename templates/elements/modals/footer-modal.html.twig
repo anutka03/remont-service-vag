@@ -1,25 +1,86 @@
 <div class="feedback-modal">
     <div class="feedback-content">
         <h2 id="modal-title">Оставить заявку</h2>
-        <form>
+        <form id="feedback-form">
             <div class="form__top">
-                <input type="text" placeholder="Ваше имя" />
-                <input type="tel" placeholder="Номер телефона" class="phone" />
+                <input type="text" placeholder="Ваше имя" name="username" required />
+                <input type="tel" placeholder="Номер телефона" class="phone" name="phone" required />
             </div>
             <div class="form__center">
                 <p>Какой сервис вам будет удобен?</p>
                 <label>
-                    <input type="radio" name="address" checked />
+                    <input type="radio" name="address" checked value="1-й Силикатный проезд, 19/2с26" />
                     <span>1-й Силикатный проезд, 19/2с26</span>
                 </label>
                 <label>
-                    <input type="radio" name="address" />
+                    <input type="radio" name="address" value="ул. Ибрагимова 31 ас4" />
                     <span>ул. Ибрагимова 31 ас4</span>
                 </label>
             </div>
             <div class="form__bottom">
-                <button>Отправить</button>
+                <button type="submit">Отправить</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const feedbackFormWrapper = document.querySelector(".feedback-modal");
+        const phoneInput = feedbackFormWrapper.querySelector("input.phone");
+        const closeBtn = feedbackFormWrapper.querySelector(".feedback-close");
+        const feedbackForm = document.getElementById("feedback-form");
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function () {
+                feedbackFormWrapper.classList.remove("active");
+                document.body.classList.remove("lock");
+            });
+        }
+
+        if (phoneInput) {
+            // Фокус на телефон при загрузке
+            phoneInput.focus();
+
+            feedbackFormWrapper.addEventListener("click", function (event) {
+                const target = event.target;
+                if (
+                    target.tagName !== "INPUT" &&
+                    target.tagName !== "BUTTON" &&
+                    !target.closest("button") &&
+                    !target.closest("input")
+                ) {
+                    phoneInput.focus();
+                    phoneInput.setSelectionRange(0, 0);
+                }
+            });
+        }
+
+        if (feedbackForm) {
+            feedbackForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(feedbackForm);
+                formData.append('page', window.location.pathname);
+
+                fetch('/send_mail', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Заявка успешно отправлена!');
+                            feedbackForm.reset();
+                        } else {
+                            alert('Произошла ошибка. Попробуйте позже.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Ошибка:', error);
+                        alert('Ошибка при отправке формы.');
+                    });
+            });
+        }
+    });
+</script>

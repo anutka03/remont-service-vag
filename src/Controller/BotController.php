@@ -18,8 +18,8 @@ class BotController extends AbstractController
         $arr = [
             'Имя клиента: ' => $request->request->get('username'),
             'Телефон клиента: ' => $request->request->get('phone'),
-            /*'Сервис: ' => $request->request->get('service'),*/
-            '%0AФорма была отправлена со страницы: ' => 'https://autocarplus.ru' . $request->request->get('page')
+            'Сервис: ' => $request->request->get('address'),
+            '%0AФорма была отправлена со страницы: ' => 'https://remont-servis-vag.ru)' . $request->request->get('page')
         ];
 
         $txt = '<u><b><i>В техцентр поступил запрос на обратный звонок. %0A%0A</i></b></u>';
