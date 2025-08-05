@@ -17,7 +17,7 @@
                              <img class="lazy" src="{{ asset('img/cars/'~brand.name|lower|replace({' ': '-'})~'/'~model_name|lower|replace({' ': '-'})~'/small.png') }}" alt="{{ model.nameEn }}">
                         </picture>
                 </span>
-                        <span class="markiblock-card-zag">{{ model.nameEn }}</span>
+                        <span class="markiblock-card-zag">{{ brand.name }} {{ model.nameEn }}</span>
                     </a>
                 </div>
                 {#{% endif %}#}
@@ -38,7 +38,7 @@
                              <img class="lazy" src="{{ asset('img/cars/'~brand.name|lower|replace({' ': '-'})~'/'~model_name|lower|replace({' ': '-'})~'/small.png') }}" alt="{{ model.nameEn }}">
                         </picture>
                         </span>
-                                <span class="markiblock-card-zag">{{ model.nameEn }}</span>
+                                <span class="markiblock-card-zag">{{ brand.name }} {{ model.nameEn }}</span>
                             </a>
                         </div>
                    {# {% endif %}#}

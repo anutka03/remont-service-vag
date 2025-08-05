@@ -5,13 +5,28 @@
         <div class="container">
             <div class="services__wrapper">
                 <div class="title fade-in-left">
-                    <h2>Цена на ремонт и обслуживание {% if brand is defined %}
-                            {{ brand.name ~ ' (' ~ brand.nameRu ~ ')' }}
-                        {% endif %}
-                        {% if model is defined %}
-                            {{ model.nameEn ~ ' (' ~ model.nameRu ~ ')' }}
-                        {% endif %}
-                    </h2>
+                    {% if is_brand is defined and is_brand %}
+                        <h2 style="text-transform: none;">Цена на ремонт и обслуживание {% if brand is defined %}
+                                {{ brand.name ~ ' (' ~ brand.nameRu ~ ')' }}
+                            {% endif %}
+                        </h2>
+
+                        {% elseif is_model is defined and is_model %}
+                            <h2 style="text-transform: none;">Цена на ремонт и обслуживание {% if brand is defined and model is defined %}
+                                    {{ brand.name ~ ' ' ~ model.nameEn ~ ' (' ~ brand.nameRu ~ ' ' ~ model.nameRu ~ ')' }}
+                                {% endif %}
+                            </h2>
+
+                        {% elseif (is_model_service is defined and is_model_service) or (is_brand_service is defined and is_brand_service) %}
+                            <h2 style="text-transform: none;">{% if service is defined %}{{ service.name }} {% endif %}
+                                {% if brand is defined %}
+                                    {{ brand.name  ~ ' (' ~ brand.nameRu ~ ')' }}
+                                {% endif %}
+                                цена
+                            </h2>
+                            {% else %}
+                                <h2 style="text-transform: none;">Услуги и цены сервиса Ваг в Москве</h2>
+                    {% endif %}
                 </div>
 
                 <ul class="accordion fade-in-up">

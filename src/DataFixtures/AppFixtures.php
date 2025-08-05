@@ -236,7 +236,7 @@ class AppFixtures extends Fixture
             [
                 'category' => ['name' => 'Техническое обслуживание', 'slug' => 'tekhnicheskoe-obsluzhivanie'],
                 'services' => [
-                    ['name' => 'Техническое обслуживание', 'slug' => 'zamena-pompy-zamena-vodyanogo-nasosa', 'base_price' => 1500],
+                    ['name' => 'Техническое обслуживание', 'slug' => 'tekhnicheskoe-obsluzhivanie', 'base_price' => 1500],
                     ['name' => 'Замена помпы (замена водяного насоса)', 'slug' => 'zamena-pompy-zamena-vodyanogo-nasosa', 'base_price' => 2250],
                     ['name' => 'Замена свечей зажигания', 'slug' => 'zamena-svechey-zazhiganiya', 'base_price' => 600],
                     ['name' => 'Чистка дроссельной заслонки', 'slug' => 'chistka-drosselnoy-zaslonki', 'base_price' => 750],

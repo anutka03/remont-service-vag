@@ -452,7 +452,7 @@ body.lock {
 }
 
 .main__title h1 {
-  font-size: 64px;
+  font-size: 32px;
   line-height: 95%;
   letter-spacing: -2px;
   text-transform: uppercase;
@@ -1919,7 +1919,7 @@ body.lock {
   }
 
   .main__title h1 {
-    font-size: 48px;
+    font-size: 28px;
   }
 }
 
