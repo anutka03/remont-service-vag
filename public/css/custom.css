@@ -312,6 +312,9 @@ mbtn2 {
     color: black;
     display: none;
 }
+.build-route-btn:visited, .build-route-btn_mobile:visited {
+    color: black;
+}
 .main__title span {
     white-space: nowrap;
 }
