@@ -312,6 +312,9 @@ mbtn2 {
     color: black;
     display: none;
 }
+.main__title span {
+    white-space: nowrap;
+}
 
 @media (max-width: 786px) {
     .build-route-btn_mobile {
