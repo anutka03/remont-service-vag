@@ -17,10 +17,17 @@
                                 {% endif %}
                             </h2>
 
-                        {% elseif (is_model_service is defined and is_model_service) or (is_brand_service is defined and is_brand_service) %}
+                        {% elseif is_brand_service is defined and is_brand_service %}
                             <h2 style="text-transform: none;">{% if service is defined %}{{ service.name }} {% endif %}
                                 {% if brand is defined %}
                                     {{ brand.name  ~ ' (' ~ brand.nameRu ~ ')' }}
+                                {% endif %}
+                                цена
+                            </h2>
+                        {% elseif is_model_service is defined and is_model_service %}
+                            <h2 style="text-transform: none;">{% if service is defined %}{{ service.name }} {% endif %}
+                                {% if brand is defined and model is defined %}
+                                    {{ brand.name  ~ ' ' ~ model.nameEn ~ ' ('  ~ brand.nameRu ~ ' ' ~ model.nameRu ~ ')' }}
                                 {% endif %}
                                 цена
                             </h2>
