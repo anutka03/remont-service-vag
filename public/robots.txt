@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /korporativnym-klientam
 Host: https://remont-servis-vag.ru/
+Sitemap: https://remont-servis-vag.ru/sitemap.xml
