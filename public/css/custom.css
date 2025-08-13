@@ -318,6 +318,17 @@ mbtn2 {
 .main__title span {
     white-space: nowrap;
 }
+.repair__item {
+    text-align: center;
+}
+
+.footer__agreement .agreement_block_text {
+    line-height: 1.2;
+    font-size: 12px;
+    margin-top: 13px;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
 
 @media (max-width: 786px) {
     .build-route-btn_mobile {
@@ -326,6 +337,27 @@ mbtn2 {
     .build-route-btn {
         display: none;
     }
+}
+
+@media (max-width: 490px) {
+    .header__top .feedback button {
+        font-size: 10px;
+    }
+    .header__top .feedback {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .footer__agreement .agreement_block_text {
+        font-weight: 200;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 360px) {
+    .header__top .block-item__item a {
+        font-size: 9px;
+    }
+
 }
 
 

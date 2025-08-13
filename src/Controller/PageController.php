@@ -22,6 +22,13 @@ final class PageController extends AbstractController
         ]);
     }
 
+    #[Route('agreement', name: 'agreement')]
+    public function agreementPage(): Response
+    {
+        return $this->render('page/agreement.html.twig', [
+        ]);
+    }
+
     #[Route('/{brandSlug}/', name: 'brand')]
     public function brand(
         string $brandSlug,

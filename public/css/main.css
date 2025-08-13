@@ -2031,7 +2031,7 @@ body.lock {
     max-width: 720px;
   }
 
-  .header__top .block-item:first-child {
+  .header__top .block-item:nth-child(2) {
     display: none;
   }
 
@@ -2218,7 +2218,7 @@ body.lock {
 }
 
 @media (max-width: 576px) {
-  .header__top .block-item:nth-child(2) :first-child {
+  .header__top .block-item:nth-child(1) :first-child {
     display: none;
   }
 
