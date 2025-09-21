@@ -3,11 +3,15 @@
         <div class="container">
             <div class="main__wrapper">
                 <div class="main__title">
+                    {% if h1 is defined %}
+                    <h1> {{ h1|raw }}</h1>
+                    {% else %}
                     <h1>{% if service is defined %} {{ service.name }} {% else %} Ремонт и сервис {% endif %} {% if brand is defined and model is defined %} {{ brand.name }} {{ model.nameEn }} ({{ brand.nameRu ~ ' ' ~ model.nameRu }}){% elseif brand is defined %}{{ brand.name }} ({{ brand.nameRu }}){% else %}автомобилей Ваг{% endif %} в Москве</h1>
                     <span
                     >С ГАРАНТИЕЙ <br />
                   ДО 3 ЛЕТ</span
                     >
+                    {% endif %}
                 </div>
                 <div class="main__btns">
                     <button class="open-form-btn" data-title="Получить консультацию">Получить консультацию</button>

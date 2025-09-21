@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Услуги на ремонт и обслуживание авто Ваг Сервис в Москве{% endblock %}
+{% block description %}<meta name="description" content="Услуги на ремонт и обслуживание Шкода, Фольксваген, Ауди, Порше Ваг Сервис">{% endblock %}
+
+        {% block header %}
+            {{ include('elements/header/header.html.twig') }}
+        {% endblock %}
+
+        {% block body %}
+            {{ include('elements/blocks/hero.html.twig', {h1: 'Услуги Ваг Сервис'}) }}
+            {{ include('elements/blocks/services.html.twig') }}
+
+        {% endblock %}
+
+{% block footer %}
+    {{ include('elements/footer/footer.html.twig') }}
+{% endblock %}

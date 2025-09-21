@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Акции Ваг Сервис в Москве{% endblock %}
+{% block description %}<meta name="description" content="Акции  автосервиса Ваг Сервис">{% endblock %}
+
+        {% block header %}
+            {{ include('elements/header/header.html.twig') }}
+        {% endblock %}
+
+        {% block body %}
+            {{ include('elements/blocks/hero.html.twig', {h1: 'Акции Ваг Сервис'}) }}
+            {{ include('elements/blocks/promotions.html.twig') }}
+
+        {% endblock %}
+
+{% block footer %}
+    {{ include('elements/footer/footer.html.twig') }}
+{% endblock %}
