@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   handleResize();
 
-  lazySwiperInit(".aboutSwiper", () => {
+  /*lazySwiperInit(".aboutSwiper", () => {
     new Swiper(".aboutSwiper", {
       slidesPerView: 3,
       spaceBetween: 16,
@@ -154,7 +154,31 @@ document.addEventListener("DOMContentLoaded", () => {
         320: { slidesPerView: 1 },
       },
     });
+  });*/
+  lazySwiperInit(".aboutSwiper", () => {
+    const swiper = new Swiper(".aboutSwiper", {
+      slidesPerView: 3,
+      spaceBetween: 16,
+      pagination: {
+        el: ".aboutSwiper .swiper-pagination", // Важно: точный селектор внутри слайдера
+        clickable: true,
+      },
+       navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+      breakpoints: {
+        1400: { slidesPerView: 3 },
+        991: { slidesPerView: 2 },
+        768: { slidesPerView: 2 },
+        375: { slidesPerView: 1 },
+        320: { slidesPerView: 1 },
+      },
+    });
   });
+
+
+
 
   lazySwiperInit(".sertSwiper", () => {
     new Swiper(".sertSwiper", {
