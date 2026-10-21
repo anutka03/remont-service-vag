@@ -405,4 +405,89 @@ mbtn2 {
 
 }
 
+/* Social media styles */
+
+.footer__social {
+    margin-top: 30px;
+}
+.footer__social .icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    background-color: #f73d31;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    color: #FFF;
+}
+
+.footer__social .contact__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 115%;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #ffffff;
+}
+.icon-vk {
+    background-image: url(/img/new/icon-vk.png);
+    background-size: 80%;
+}
+
+.icon-drive {
+    background-image: url(/img/new/icon-drive2.jpg);
+    background-size: contain;
+    background-color: transparent;
+}
+
+.icon-dzen {
+    background-image: url(/img/new/icon-dzen.png);
+    background-size: contain;
+    background-color: white !important;
+}
+
+.icon-rutube {
+    background-image: url(/img/new/icon-rutube.png);
+    background-size: contain;
+    background-color: transparent;
+}
+
+.icon-drom {
+    background-image: url(/img/new/icon-drom.png);
+    background-size: contain;
+    background-color: transparent;
+}
+
+.icon-ok {
+    background-color: white !important;
+    background-image: url(/img/new/icon-ok.png);
+    background-size: contain;
+}
+
+.icon-tg {
+    background-image: url(/img/new/icon-tg.png);
+    background-size: contain;
+    background-color: transparent;
+}
+
+@media (max-width: 640px) {
+    .footer__social {
+        margin-top: 50px;
+    }
+    .footer__social .icon {
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+    }
+    .footer__social .hidden-xs {
+        display: none;
+    }
+    .icon-vk {
+        background-size: 80%;
+    }
+
+}
+
 

@@ -5,7 +5,7 @@
             <div class="block-item">
                 <div class="block-item__item">
                     <img src="{{ asset('img/header/place.png')}}" alt="" />
-                    <p>ул. Ибрагимова 31 ас4</p>
+                    <p>г. Москва, ул. Ибрагимова 31 ас4</p>
                 </div>
                 <div class="block-item__item">
                     <img src="{{ asset('img/header/local_phone.png')}}" alt="" />
@@ -17,7 +17,8 @@
                 <div class="block-item__item">
                     <a href="yandexnavi://build_route_on_map?lat_to=55.791157&lon_to=37.729449" target="_blank" class="build-route-btn_mobile">построить маршрут</a>
                 </div>
-            </div>
+            </div>            
+            <!--
             <div class="block-item">
                 <div class="block-item__item">
                     <img src="{{ asset('img/header/place.png')}}" alt="" />
@@ -34,24 +35,28 @@
                     <a href="yandexnavi://build_route_on_map?lat_to=55.791157&lon_to=37.729449" target="_blank"  class="build-route-btn_mobile">построить маршрут</a>
                 </div>
             </div>
+            -->
+          
+           <!--  
             <div class="time">
                 <div class="time__item">
                     <img src="{{ asset('img/header/schedule.png')}}" alt="" />
                     <p>09:00-21:00</p>
                 </div>
             </div>
+            
+            -->
         </div>
+        
+        
         <div class="footer__top">
-            {#<iframe
-                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A1eb2a856320de4b8b4096743e9dfdac6ab09a8ee07cb5c8ae1f485a2ce66b8dc&amp;source=constructor"
-                    width="100%"
-                    height="545"
-                    frameborder="0"
-            ></iframe>#}
+            {#<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaa07e616d6a43ac24b1d1b75244e9d029549c02b2aa41a5ade734ac0f91cafa5&amp;source=constructor" width="648" height="510" frameborder="0"></iframe>#}
+
+
 
             {# Desktop карта #}
             <div class="map map-desktop d-none d-md-block"
-                 data-src="https://yandex.ru/map-widget/v1/?um=constructor%3A1eb2a856320de4b8b4096743e9dfdac6ab09a8ee07cb5c8ae1f485a2ce66b8dc&source=constructor"
+                 data-src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaa07e616d6a43ac24b1d1b75244e9d029549c02b2aa41a5ade734ac0f91cafa5&amp;source=constructor"
                  data-height="545">
                 <img src="{{ asset('img/map-desktop.jpg') }}"
                      alt="Карта"
@@ -61,7 +66,7 @@
 
             {# Mobile карта #}
             <div class="map map-mobile d-block d-md-none"
-                 data-src="https://yandex.ru/map-widget/v1/?um=constructor%3A7054ae20c3967bc24f5d194e2f865ce0530a01af00a37b4cb3c25c6ef6ceef67&amp;source=constructor"
+                 data-src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaa07e616d6a43ac24b1d1b75244e9d029549c02b2aa41a5ade734ac0f91cafa5&amp;source=constructor"
                  data-height="300">
                 <img src="{{ asset('img/map-mobile.jpg') }}"
                      alt="Карта"
@@ -90,8 +95,24 @@
     <div class="container">
         <div class="footer__block">
             <p>Ваг Сервис</p>
-            <p>Ремонт и обслуживание VAG Group в Москве</p>
+            <p>Автосервис VAG: ремонт и обслуживание Volkswagen, Audi, Skoda, SEAT в Москве</p>
         </div>
+<noindex>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer__social">
+                    <span class="hidden-xs contact__title">Мы в соц. сетях:</span>
+                    <a target="_blank" href="https://vk.com/amplus.auto?w=club230044830" class="icon icon-vk"></a>
+                    <a target="_blank" href="https://www.drive2.ru/users/autocarplus/" class="icon icon-drive"></a>
+                    <a target="_blank" href="https://dzen.ru/amplus" class="icon icon-dzen"></a>
+                    <a target="_blank" href="https://rutube.ru/channel/61500498/" class="icon icon-rutube"></a>
+                    <a target="_blank" href="https://auto.drom.ru/dealer337383/" class="icon icon-drom"></a>
+                    <a target="_blank" href="https://ok.ru/video/c29684637" class="icon icon-ok"></a>
+                    <a target="_blank" href="https://t.me/amplusauto" class="icon icon-tg"></a>
+                </div>
+            </div>
+        </div>
+</noindex>
     </div>
 </div>
 
